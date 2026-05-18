@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Colors -->
+    <color name="colorPrimary">#6C63FF</color>
+    <color name="colorPrimaryDark">#4B44CC</color>
+    <color name="colorAccent">#FF6B6B</color>
+    <color name="colorSecondary">#43E97B</color>
+
+    <!-- Backgrounds -->
+    <color name="bg_main">#F5F6FA</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="bg_dark">#1A1A2E</color>
+    <color name="bg_input">#F0F2F8</color>
+
+    <!-- Text -->
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Notification states -->
+    <color name="notif_unread_bg">#EEF0FF</color>
+    <color name="notif_read_bg">#FFFFFF</color>
+    <color name="notif_like">#FF6B6B</color>
+    <color name="notif_comment">#6C63FF</color>
+    <color name="notif_follow">#43E97B</color>
+    <color name="notif_answer">#FFB347</color>
+
+    <!-- Notes type colors -->
+    <color name="notes_pdf">#FF6B6B</color>
+    <color name="notes_doc">#4A90D9</color>
+    <color name="notes_img">#43E97B</color>
+    <color name="notes_ppt">#FF9800</color>
+    <color name="notes_video">#9C27B0</color>
+    <color name="notes_other">#78909C</color>
+
+    <!-- Chat -->
+    <color name="chat_bubble_self">#6C63FF</color>
+    <color name="chat_bubble_other">#F0F2F8</color>
+    <color name="chat_text_self">#FFFFFF</color>
+    <color name="chat_text_other">#1A1A2E</color>
+
+    <!-- Legacy - keep for compat -->
+    <color name="purple_200">#6C63FF</color>
+    <color name="purple_500">#6C63FF</color>
+    <color name="purple_700">#4B44CC</color>
+    <color name="teal_200">#43E97B</color>
+    <color name="teal_700">#2ECC71</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blackshade">#252525</color>
+    <color name="black_shade_1">#292036</color>
+    <color name="black_shade_2">#272B33</color>
+    <color name="black_shade_3">#22252D</color>
+    <color name="yellow">#ffa500</color>
+    <color name="button_back">#3D4149</color>
+    <color name="transperant">#00FFFFFF</color>
+    <color name="divider">#E5E7EB</color>
+    <color name="online_dot">#43E97B</color>
+</resources>

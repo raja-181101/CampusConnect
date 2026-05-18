@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/bg_card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="14dp">
+
+        <!-- userProfileImg: used by FollowAdapter -->
+        <!-- profileImg: alias via same view — FollowAdapter needs userProfileImg -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userProfileImg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/profilepic"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@color/divider"
+            app:strokeWidth="1dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="12dp">
+
+            <!-- nameUser: used by FollowAdapter -->
+            <TextView
+                android:id="@+id/nameUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="Username"/>
+
+            <TextView
+                android:id="@+id/proffision"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:text=""/>
+        </LinearLayout>
+
+        <!-- Follow: used by FollowAdapter -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Follow"
+            android:textSize="12sp"
+            app:backgroundTint="@color/colorPrimary"
+            app:cornerRadius="20dp"
+            android:paddingHorizontal="14dp"/>
+
+        <!-- Chat icon -->
+        <ImageView
+            android:id="@+id/chatBtn"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="7dp"
+            android:layout_marginStart="6dp"
+            android:src="@drawable/chat"
+            android:tint="@color/colorPrimary"
+            android:background="@drawable/download_btn_bg"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

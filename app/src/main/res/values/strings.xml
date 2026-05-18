@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">CampusConnect</string>
+    <string name="OpenDrawer">Open Drawer</string>
+    <string name="CloseDrawer">Close Drawer</string>
+
+    <!-- Auth -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="phone">Phone Number</string>
+    <string name="gender">Gender</string>
+    <string name="profession">Profession / Branch</string>
+    <string name="already_have_account">Already have an account? Login</string>
+    <string name="dont_have_account">Don\'t have an account? Register</string>
+
+    <!-- Chat -->
+    <string name="chats">Chats</string>
+    <string name="type_message">Type a message...</string>
+    <string name="send">Send</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+
+    <!-- Notes -->
+    <string name="upload_notes">Upload Notes</string>
+    <string name="download">Download</string>
+    <string name="notes_title">Notes Title</string>
+    <string name="uploading">Uploading...</string>
+    <string name="upload_success">Uploaded successfully!</string>
+    <string name="download_success">Downloaded to Downloads folder</string>
+
+    <!-- Notifications -->
+    <string name="notifications">Notifications</string>
+    <string name="mark_all_read">Mark all as read</string>
+    <string name="no_notifications">No notifications yet</string>
+
+    <!-- General -->
+    <string name="loading">Loading...</string>
+    <string name="no_posts">No posts yet</string>
+    <string name="follow">Follow</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="posts">Posts</string>
+    <string name="logout">Logout</string>
+</resources>
