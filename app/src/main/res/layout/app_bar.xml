@@ -18,6 +18,7 @@
             android:background="@color/bg_card"
             app:title="CampusConnect"
             app:titleTextColor="@color/text_primary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6">
 
             <LinearLayout
