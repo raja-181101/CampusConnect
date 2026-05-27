@@ -148,8 +148,9 @@ public class notificationAdapter extends RecyclerView.Adapter<notificationAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CardView card;
         ShapeableImageView userImg;
-        ImageView typeIcon, unreadDot;
+        ImageView typeIcon;
         TextView notifText, time;
+        View unreadDot;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (binding.appBarId.questionButton != null) {
             binding.appBarId.questionButton.setOnClickListener(v ->
                 startActivity(new Intent(this, questionsActivity.class)));
+
         }
 
         // Chat button in toolbar

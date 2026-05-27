@@ -83,7 +83,7 @@
                 android:padding="6dp"
                 android:src="@drawable/download_icon"
                 android:background="@drawable/download_btn_bg"
-                android:tint="@color/colorPrimary"/>
+                app:tint="@color/colorPrimary" />
 
             <ProgressBar
                 android:id="@+id/downloadProgress"

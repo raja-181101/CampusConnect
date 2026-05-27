@@ -1,5 +1,6 @@
 package com.example.try1.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,8 +48,10 @@ public class notificationfragment extends Fragment {
 
         String uid = FirebaseAuth.getInstance().getUid();
 
+        assert uid != null;
         database.getReference("notifications").child(uid)
                 .addValueEventListener(new ValueEventListener() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         list.clear();

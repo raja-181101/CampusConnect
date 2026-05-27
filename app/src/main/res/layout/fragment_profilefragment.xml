@@ -43,8 +43,8 @@
                     android:layout_alignParentBottom="true"
                     android:src="@drawable/add"
                     android:background="@drawable/unread_count_bg"
-                    android:tint="@color/white"
-                    android:padding="5dp"/>
+                    android:padding="5dp"
+                    app:tint="@color/white" />
             </RelativeLayout>
 
             <!-- Name -->
@@ -128,7 +128,6 @@
             <!-- Logout button -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout_btn"
-                android:onClick="logout_btm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

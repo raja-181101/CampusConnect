@@ -24,7 +24,7 @@ public class admin extends AppCompatActivity {
     String[] items = {"ECE", "CSE", "IT", "EEE", "CIV", "MECH"};
     String[] sec = {"A", "B", "C", "D"};
     String[] year = {"1", "2", "3", "4"};
-    AutoCompleteTextView autoCompleteTextView, section, years;
+    AutoCompleteTextView branch, section, years;
     ArrayAdapter<String> arrayAdapter, list1, list2;
     Button save;
     TextInputLayout subname, subkey;
@@ -37,7 +37,7 @@ public class admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        autoCompleteTextView = findViewById(R.id.auto_complete_type);
+        branch = findViewById(R.id.branch);
         section = findViewById(R.id.section);
         years = findViewById(R.id.year);
         save = findViewById(R.id.savebtn);
@@ -46,7 +46,7 @@ public class admin extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         arrayAdapter = new ArrayAdapter<String>(this, R.layout.list_items, items);
-        autoCompleteTextView.setAdapter(arrayAdapter);
+        branch.setAdapter(arrayAdapter);
 
         list1 = new ArrayAdapter<String>(this, R.layout.list_items, sec);
         list2 = new ArrayAdapter<String>(this, R.layout.list_items, year);
@@ -54,13 +54,13 @@ public class admin extends AppCompatActivity {
         years.setAdapter(list2);
 
 
-        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        branch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 bran = "";
                 String item = parent.getItemAtPosition(position).toString();
                 bran = item;
-                Toast.makeText(getApplicationContext(), "branch: " + item, Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "branch: " + item, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -69,7 +69,7 @@ public class admin extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 sect = "";
                 String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(), "branch: " + item, Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "branch: " + item, Toast.LENGTH_SHORT).show();
                 sect = item;
             }
         });
@@ -80,7 +80,7 @@ public class admin extends AppCompatActivity {
                 yer = "";
                 String item = parent.getItemAtPosition(position).toString();
                 yer = item;
-                Toast.makeText(getApplicationContext(), "branch: " + item, Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "branch: " + item, Toast.LENGTH_SHORT).show();
 
             }
         });

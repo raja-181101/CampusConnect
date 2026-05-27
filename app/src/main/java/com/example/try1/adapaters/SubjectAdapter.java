@@ -46,75 +46,84 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
         holder.binding.SubjectName.setText(model.getSubjectName());
         holder.binding.Branch.setText(model.getBranch());
         holder.binding.Year.setText(model.getYear());
-        holder.binding.AccessNow.setOnClickListener(new View.OnClickListener() {
+
+        holder.binding.subjectCardId.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 holder.binding.InputSubKey.setVisibility(View.VISIBLE);
                 holder.binding.key.setVisibility(View.VISIBLE);
                 holder.binding.key.setClickable(true);
+                holder.binding.AccessNow.setText("Enroll");
             }
         });
-        holder.binding.key.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                FirebaseDatabase.getInstance().getReference()
-                        .child("Subjects")
-                        .child(model.getSubjectName())
-                        .child("Sections").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                for (DataSnapshot dataSnapshot  : snapshot.getChildren()){
-                                    SubjectModel sube = dataSnapshot.getValue(SubjectModel.class);
-                                    if (holder.binding.InputSubKey.getEditText().toString().equals(sube.getSubjectkey())){
-                                        FirebaseDatabase.getInstance().getReference()
-                                                .child("Subjects")
-                                                .child(model.getSubjectName())
-                                                .child("Sections")
-                                                .child(sube.getSec())
-                                                .child("Enrolled")
-                                                .child(FirebaseAuth.getInstance().getUid())
-                                                .setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                    @Override
-                                                    public void onSuccess(Void unused) {
-                                                        SubjectModel enmod = new SubjectModel();
-                                                        enmod.setSubjectName(model.getSubjectName());
-                                                        enmod.setSec(sube.getSec());
-                                                        enmod.setYear(model.getYear());
-                                                        enmod.setBranch(model.getBranch());
-                                                        FirebaseDatabase.getInstance().getReference()
-                                                                .child("user")
-                                                                .child(FirebaseAuth.getInstance().getUid())
-                                                                .child("Enrolled")
-                                                                .child(model.getSubjectName())
-                                                                .setValue(enmod).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                    @Override
-                                                                    public void onSuccess(Void unused) {
-                                                                        holder.binding.InputSubKey.getEditText().setText("");
-                                                                        holder.binding.InputSubKey.setVisibility(View.GONE);
-                                                                        holder.binding.key.setClickable(false);
-                                                                        holder.binding.key.setVisibility(View.GONE);
 
-                                                                        Toast.makeText(context, "Sucess", Toast.LENGTH_SHORT).show();
-                                                                    }
-                                                                });
 
-                                                    }
-                                                });
+
+            holder.binding.AccessNow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FirebaseDatabase.getInstance().getReference()
+                            .child("Subjects")
+                            .child(model.getSubjectName())
+                            .child("Sections").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for (DataSnapshot dataSnapshot  : snapshot.getChildren()){
+                                        SubjectModel sube = dataSnapshot.getValue(SubjectModel.class);
+                                        if (holder.binding.key.getText().toString().equals(sube.getSubjectkey())){
+                                            FirebaseDatabase.getInstance().getReference()
+                                                    .child("Subjects")
+                                                    .child(model.getSubjectName())
+                                                    .child("Sections")
+                                                    .child(sube.getSec())
+                                                    .child("Enrolled")
+                                                    .child(FirebaseAuth.getInstance().getUid())
+                                                    .setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void unused) {
+                                                            SubjectModel enmod = new SubjectModel();
+                                                            enmod.setSubjectName(model.getSubjectName());
+                                                            enmod.setSec(sube.getSec());
+                                                            enmod.setYear(model.getYear());
+                                                            enmod.setBranch(model.getBranch());
+                                                            FirebaseDatabase.getInstance().getReference()
+                                                                    .child("user")
+                                                                    .child(FirebaseAuth.getInstance().getUid())
+                                                                    .child("Enrolled")
+                                                                    .child(model.getSubjectName())
+                                                                    .setValue(enmod).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                        @Override
+                                                                        public void onSuccess(Void unused) {
+                                                                            holder.binding.InputSubKey.getEditText().setText("");
+                                                                            holder.binding.InputSubKey.setVisibility(View.GONE);
+                                                                            holder.binding.key.setClickable(false);
+                                                                            holder.binding.key.setVisibility(View.GONE);
+
+                                                                            Toast.makeText(context, "Sucess", Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    });
+
+                                                        }
+                                                    });
+                                        }
+
                                     }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
 
                                 }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
+                            });
 
 
-            }
-        });
+                }
+            });
+
+
+
+
 
 
     }

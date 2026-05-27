@@ -27,9 +27,9 @@ public class subjects extends Fragment {
     FragmentSubjectsBinding binding;
     FirebaseDatabase database;
     FirebaseAuth auth;
-    ArrayList<SubjectModel> list;
-  //  ArrayList<SubjectModel> list1;
-  //  ArrayList<SubjectModel> list3;
+    ArrayList<SubjectModel> allSubjects,list;
+    ArrayList<String> enrolledSubjects;
+    ArrayList<SubjectModel> list3;
 
     public subjects() {
 
@@ -42,9 +42,8 @@ public class subjects extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
+
         list = new ArrayList<>();
-     //   list1 = new ArrayList<>();
-       // list3 = new ArrayList<>();
 
 
     }
@@ -57,15 +56,46 @@ public class subjects extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         binding.SubjectsRv.setLayoutManager(linearLayoutManager);
 
-     /*   database.getReference().child("Subjects").addValueEventListener(new ValueEventListener() {
+        database.getReference().child("Subjects").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                allSubjects = new ArrayList<>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-
                     SubjectModel model = dataSnapshot.getValue(SubjectModel.class);
-                    list.add(model);
+                    allSubjects.add(model);
                 }
+                database.getReference().child("user").child(auth.getUid()).child("Enrolled").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        enrolledSubjects = new ArrayList<>();
+                        if (snapshot.exists()){
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                SubjectModel model = dataSnapshot.getValue(SubjectModel.class);
+                                enrolledSubjects.add(model.getSubjectName());
+                            }
+                        }
+                        list.clear();
+                        for (SubjectModel model : allSubjects){
+                            if (!enrolledSubjects.contains(model.getSubjectName())){
+                                list.add(model);
+
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+
+
             }
 
             @Override
@@ -73,35 +103,11 @@ public class subjects extends Fragment {
 
             }
         });
-        database.getReference().child("user").child(auth.getUid()).child("Enrolled").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    SubjectModel model = dataSnapshot.getValue(SubjectModel.class);
-                    list1.add(model);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        for (SubjectModel model : list){
-            if (!list1.contains(list)){
-                list3.add(model);
-                adapter.notifyDataSetChanged();
-            }
-        }*/
 
 
 
 
-
-
-       database.getReference().child("Subjects").addValueEventListener(new ValueEventListener() {
+       /*database.getReference().child("Subjects").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
@@ -110,17 +116,15 @@ public class subjects extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     SubjectModel model = dataSnapshot.getValue(SubjectModel.class);
-                //    final String[] Sub = new String[1];
+                    final String[] Sub = new String[1];
 
 
-                list.add(model);
-                /*    database.getReference().child("user").child(auth.getUid()).child("Enrolled").addValueEventListener(new ValueEventListener() {
+                //list.add(model);
+                   database.getReference().child("user").child(auth.getUid()).child("Enrolled").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                             if (snapshot.exists()) {
-
-
                                 for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
 
                                     SubjectModel model1 = dataSnapshot1.getValue(SubjectModel.class);
@@ -130,17 +134,20 @@ public class subjects extends Fragment {
 
                                     }
 
+                                }
+                                    if (!model.getSubjectName().equals(Sub[0])) {
+                                        list.add(model);
+                                        adapter.notifyDataSetChanged();
 
-                                }
-                                if (!model.getSubjectName().equals(Sub[0])) {
-                                    list.add(model);
-                                    adapter.notifyDataSetChanged();
-                                }
+
+                                    }
+
 
 
                             } else {
                                 list.add(model);
                                 adapter.notifyDataSetChanged();
+
                             }
 
 
@@ -150,11 +157,12 @@ public class subjects extends Fragment {
                         public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    });*/
+                    });
 
 
                 }
                 adapter.notifyDataSetChanged();
+
 
 
             }
@@ -164,7 +172,7 @@ public class subjects extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });*/
         binding.SubjectsRv.setAdapter(adapter);
 
 

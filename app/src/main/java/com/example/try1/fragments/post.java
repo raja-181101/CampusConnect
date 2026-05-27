@@ -119,7 +119,7 @@ public class post extends Fragment {
 
             }
         });
-        binding.postimg69.setOnClickListener(new View.OnClickListener() {
+        binding.postimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -156,7 +156,7 @@ public class post extends Fragment {
                                       @Override
                                       public void onSuccess(Void unused) {
                                           Toast.makeText(getContext(),"success",Toast.LENGTH_SHORT).show();
-                                          binding.postimg.setVisibility(View.GONE);
+                                          binding.postimg69.setVisibility(View.GONE);
                                           binding.discription.setHint("Description");
                                           binding.discription.setText("");
                                           dialog.dismiss();

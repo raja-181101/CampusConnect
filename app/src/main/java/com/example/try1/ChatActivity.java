@@ -1,5 +1,6 @@
 package com.example.try1;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -27,9 +28,10 @@ public class ChatActivity extends AppCompatActivity {
     RecyclerView messagesRV;
     EditText messageInput;
     FloatingActionButton sendBtn;
-    ImageView backBtn, onlineIndicator;
+    ImageView backBtn;
     ShapeableImageView chatPartnerImg;
     TextView chatPartnerName, onlineStatus;
+    View onlineIndicator;
 
     FirebaseAuth auth;
     FirebaseDatabase database;
@@ -40,6 +42,7 @@ public class ChatActivity extends AppCompatActivity {
     ArrayList<ChatModel> messageList = new ArrayList<>();
     ChatMessageAdapter adapter;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

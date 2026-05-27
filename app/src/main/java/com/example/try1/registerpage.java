@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class registerpage extends AppCompatActivity {
     TextInputLayout username, phonenumber, email, password, confirmpassword;
     FirebaseDatabase firebasedatabase;
@@ -37,11 +39,11 @@ public class registerpage extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
     }
     public void nextbuton(View view) {
-        String username_ = username.getEditText().getText().toString();
-        String phonenumber_ = phonenumber.getEditText().getText().toString();
-        String email_ = email.getEditText().getText().toString();
-        String password_ = password.getEditText().getText().toString();
-        String confirmpassword_ = confirmpassword.getEditText().getText().toString();
+        String username_ = Objects.requireNonNull(username.getEditText()).getText().toString();
+        String phonenumber_ = Objects.requireNonNull(phonenumber.getEditText()).getText().toString();
+        String email_ = Objects.requireNonNull(email.getEditText()).getText().toString();
+        String password_ = Objects.requireNonNull(password.getEditText()).getText().toString();
+        String confirmpassword_ = Objects.requireNonNull(confirmpassword.getEditText()).getText().toString();
 
 
         if (!username_.isEmpty()) {

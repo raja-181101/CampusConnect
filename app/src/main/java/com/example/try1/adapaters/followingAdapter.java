@@ -1,6 +1,7 @@
 package com.example.try1.adapaters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.try1.ChatActivity;
 import com.example.try1.R;
 import com.example.try1.databinding.UserSampleBinding;
 import com.example.try1.models.FollowModel;
@@ -52,14 +54,30 @@ public class followingAdapter extends RecyclerView.Adapter<followingAdapter.View
                                 .load(stoaringdata.getProfilephoto())
                                 .placeholder(R.drawable.profilepic)
                                 .into(holder.binding.userProfileImg);
-                        holder.binding.nameUser.setText((stoaringdata.getUsername()));
+                        holder.binding.nameUser.setText(stoaringdata.getUsername());
+
+                        holder.binding.chatBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(context, ChatActivity.class);
+                                intent.putExtra("chatUserId", stoaringdata.getId());
+                                intent.putExtra("chatUserName", stoaringdata.getUsername());
+                                intent.putExtra("chatUserPhoto", stoaringdata.getProfilephoto());
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
+
+                            }
+                        });
                     }
+
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
+
 
     }
 

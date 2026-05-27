@@ -63,9 +63,8 @@ FragmentFollowingBinding binding;
         binding.followingRV.setAdapter(adapter);
 
 
-        database.getReference().child("user")
-                .child(auth.getUid())
-                .child("following").addValueEventListener(new ValueEventListener() {
+        database.getReference("following")
+                .child(auth.getUid()).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot: snapshot.getChildren()) {

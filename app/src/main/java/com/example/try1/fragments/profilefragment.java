@@ -18,6 +18,7 @@ import com.example.try1.R;
 import com.example.try1.adapaters.FollowAdapter;
 import com.example.try1.databinding.FragmentProfilefragmentBinding;
 import com.example.try1.databinding.ProfilehedderlayoutBinding;
+import com.example.try1.loginpage;
 import com.example.try1.models.FollowModel;
 import com.example.try1.models.stoaringdata;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -119,6 +120,18 @@ public class profilefragment extends Fragment {
             }
         });
 
+        binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(view.getContext(), loginpage.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                getActivity().finish();
+
+            }
+        });
+
         return binding.getRoot();
     }
 
@@ -144,6 +157,8 @@ public class profilefragment extends Fragment {
                 }
             });
 
+        }else {
+            System.out.println("no image");
         }
 
     }
