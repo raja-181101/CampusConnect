@@ -128,6 +128,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         startActivity(new Intent(this, loginpage.class));
         finish();
     }
+    public void logout_btm2(View view) {
+        auth.signOut();
+        database.getReference("presence").child(auth.getUid()).setValue(false);
+        startActivity(new Intent(this, loginpage.class));
+        finish();
+    }
 
     @Override
     public void onBackPressed() {
